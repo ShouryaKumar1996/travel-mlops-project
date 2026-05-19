@@ -27,8 +27,8 @@ def predict():
         prediction = model.predict(input_df)[0]
 
         return jsonify({
-            "predicted_price": round(float(prediction), 2)
-        })
+    "predicted_price": float(prediction)
+})
 
     except Exception as e:
 
