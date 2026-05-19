@@ -31,3 +31,4 @@ airflow/logs/
 
 # Streamlit cache
 .streamlit/secrets.toml
+*.db
