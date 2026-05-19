@@ -1,0 +1,33 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Conda
+.env
+.venv
+
+# MLflow
+mlruns/
+
+# Docker
+*.log
+
+# VS Code
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+temp/
+tmp/
+
+# Airflow
+airflow/logs/
+
+# Streamlit cache
+.streamlit/secrets.toml
