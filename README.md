@@ -1,4 +1,3 @@
-````markdown
 # Flight Price Prediction MLOps Project
 
 ## Project Overview
@@ -29,23 +28,23 @@ Kubernetes Deployment
 Jenkins CI/CD Pipeline
       ↓
 Airflow DAG Orchestration
-````
+```
 
 ---
 
 # Tech Stack
 
-| Category            | Tools Used            |
-| ------------------- | --------------------- |
-| Programming         | Python                |
-| Machine Learning    | Scikit-Learn, XGBoost |
-| Frontend            | Streamlit             |
-| Backend API         | Flask                 |
-| Experiment Tracking | MLflow                |
-| Containerization    | Docker                |
-| Orchestration       | Kubernetes            |
-| CI/CD               | Jenkins               |
-| Workflow Scheduling | Airflow               |
+| Category | Tools Used |
+|---|---|
+| Programming | Python |
+| Machine Learning | Scikit-Learn, XGBoost |
+| Frontend | Streamlit |
+| Backend API | Flask |
+| Experiment Tracking | MLflow |
+| Containerization | Docker |
+| Orchestration | Kubernetes |
+| CI/CD | Jenkins |
+| Workflow Scheduling | Airflow |
 
 ---
 
@@ -53,17 +52,16 @@ Airflow DAG Orchestration
 
 The dataset contains flight information such as:
 
-* Source City
-* Destination City
-* Flight Type
-* Airline Agency
-* Distance
-* Flight Duration
-* Date Features
+- Source City
+- Destination City
+- Flight Type
+- Airline Agency
+- Distance
+- Flight Duration
+- Date Features
 
 ### Target Variable
-
-* Flight Ticket Price
+- Flight Ticket Price
 
 ---
 
@@ -71,22 +69,21 @@ The dataset contains flight information such as:
 
 Models Implemented:
 
-* Random Forest Regressor
-* XGBoost Regressor
+- Random Forest Regressor
+- XGBoost Regressor
 
 ### Final Production Model
-
-* XGBoost Regressor
+- XGBoost Regressor
 
 ---
 
 # Model Performance
 
-| Metric   | Value     |
-| -------- | --------- |
+| Metric | Value |
+|---|---|
 | R² Score | ADD_VALUE |
-| RMSE     | ADD_VALUE |
-| MAE      | ADD_VALUE |
+| RMSE | ADD_VALUE |
+| MAE | ADD_VALUE |
 
 ---
 
@@ -118,10 +115,10 @@ travel-mlops-project/
 
 MLflow is used for:
 
-* Model tracking
-* Metric logging
-* Experiment comparison
-* Artifact storage
+- Model tracking
+- Metric logging
+- Experiment comparison
+- Artifact storage
 
 ### MLflow Dashboard
 
@@ -169,8 +166,8 @@ Docker was used to containerize the Flask application for reproducible deploymen
 
 The Docker container was deployed on Kubernetes using:
 
-* Deployment YAML
-* Service YAML
+- Deployment YAML
+- Service YAML
 
 ### Kubernetes Screenshot
 
@@ -182,10 +179,10 @@ The Docker container was deployed on Kubernetes using:
 
 Jenkins was implemented to automate:
 
-* Dependency installation
-* Flask testing
-* Docker image building
-* Kubernetes deployment
+- Dependency installation
+- Flask testing
+- Docker image building
+- Kubernetes deployment
 
 ### Jenkins Screenshot
 
@@ -199,10 +196,10 @@ Apache Airflow was used to orchestrate the ML pipeline workflow.
 
 ### DAG Tasks
 
-* Data Ingestion
-* Model Training
-* Model Evaluation
-* Model Deployment
+- Data Ingestion
+- Model Training
+- Model Evaluation
+- Model Deployment
 
 ### Airflow Screenshot
 
@@ -290,28 +287,55 @@ kubectl apply -f kubernetes/service.yaml
 
 ---
 
-## 9. Run Airflow
+## 9. Run Jenkins Pipeline
+
+1. Start Jenkins Server
+
+2. Open Jenkins Dashboard
+
+```bash
+http://localhost:8080
+```
+
+3. Create Pipeline Project
+
+4. Configure Pipeline using `Jenkinsfile`
+
+5. Trigger Build
+
+The Jenkins pipeline automates:
+
+- Dependency Installation
+- Flask API Testing
+- Docker Image Build
+- Kubernetes Deployment
+
+---
+
+## 10. Run Airflow
 
 ```bash
 docker compose up
+```
+
+Open:
+
+```bash
+http://localhost:8081
 ```
 
 ---
 
 # Future Improvements
 
-* Real-time data integration
-* Cloud deployment
-* Automated retraining
-* Monitoring dashboard
-* Model drift detection
+- Real-time data integration
+- Cloud deployment
+- Automated retraining
+- Monitoring dashboard
+- Model drift detection
 
 ---
 
 # Author
 
 Shourya Kumar
-
-
-```
-```
