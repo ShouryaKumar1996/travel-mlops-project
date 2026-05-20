@@ -9,9 +9,6 @@ __pycache__/
 .env
 .venv
 
-# MLflow
-mlruns/
-
 # Docker
 *.log
 
@@ -26,9 +23,8 @@ Thumbs.db
 temp/
 tmp/
 
-# Airflow
-airflow/logs/
-
 # Streamlit cache
 .streamlit/secrets.toml
+
+# Database cache
 *.db

@@ -5,8 +5,10 @@ import joblib
 app = Flask(__name__)
 
 # Load trained model
-model = joblib.load('models/flight_price_model.pkl')
-
+model = joblib.load(
+    r'C:\Users\shourya\Desktop\travel-mlops-project\models\final_flight_price_model.pkl'
+)
+print("FINAL MODEL LOADED SUCCESSFULLY")
 
 @app.route('/')
 def home():
@@ -24,10 +26,10 @@ def predict():
 
         input_df = pd.DataFrame([data])
 
-        prediction = model.predict(input_df)[0]
+        prediction = model.predict(input_df)
 
         return jsonify({
-    "predicted_price": float(prediction)
+    "predicted_price": float(prediction[0])
 })
 
     except Exception as e:

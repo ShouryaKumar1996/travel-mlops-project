@@ -2,22 +2,34 @@ import streamlit as st
 import requests
 import pandas as pd
 
-# Page Configuration
+# =========================================================
+# PAGE CONFIGURATION
+# =========================================================
+
 st.set_page_config(
     page_title="Flight Price Prediction",
     page_icon="✈️",
     layout="centered"
 )
 
-# Load Dataset
+# =========================================================
+# LOAD DATASET
+# =========================================================
+
 df = pd.read_csv("../data/flights.csv")
 
-# Title
+# =========================================================
+# TITLE
+# =========================================================
+
 st.title("✈️ Flight Price Prediction System")
 
 st.write("Enter flight details to predict ticket price.")
 
-# Dynamic Dropdown Inputs
+# =========================================================
+# INPUTS
+# =========================================================
+
 from_city = st.selectbox(
     "From City",
     sorted(df['from'].unique())
@@ -38,7 +50,10 @@ agency = st.selectbox(
     sorted(df['agency'].unique())
 )
 
-# Numerical Inputs
+# =========================================================
+# NUMERICAL INPUTS
+# =========================================================
+
 flight_time = st.number_input(
     "Flight Time (hours)",
     min_value=0.0,
@@ -51,54 +66,71 @@ distance = st.number_input(
     value=500.0
 )
 
-year = st.number_input(
-    "Year",
-    min_value=2019,
-    max_value=2030,
-    value=2019
-)
+# =========================================================
+# PREDICTION BUTTON
+# =========================================================
 
-month = st.number_input(
-    "Month",
-    min_value=1,
-    max_value=12,
-    value=9
-)
-
-day = st.number_input(
-    "Day",
-    min_value=1,
-    max_value=31,
-    value=26
-)
-
-weekday = st.number_input(
-    "Weekday",
-    min_value=0,
-    max_value=6,
-    value=3
-)
-
-# Prediction Button
 if st.button("Predict Flight Price"):
 
     url = "http://localhost:5001/predict"
 
-    payload = {
-        "from": from_city,
-        "to": to_city,
-        "flightType": flight_type,
-        "agency": agency,
-        "time": flight_time,
-        "distance": distance,
-        "year": year,
-        "month": month,
-        "day": day,
-        "weekday": weekday
-    }
+    # Current Date Features
+    today = pd.Timestamp.today()
+
+    weekday = today.dayofweek
+
+    month = today.month
+
+    # Duration Category
+    if flight_time <= 2:
+
+        duration_category = 'short'
+
+    elif flight_time <= 5:
+
+        duration_category = 'medium'
+
+    else:
+
+        duration_category = 'long'
+
+    # Payload
+    payload = pd.DataFrame([{
+
+        'from': from_city,
+
+        'to': to_city,
+
+        'flightType': flight_type,
+
+        'agency': agency,
+
+        'time': flight_time,
+
+        'distance': distance,
+
+        'year': today.year,
+
+        'month': month,
+
+        'day': today.day,
+
+        'weekday': weekday,
+
+        'is_weekend': 1 if weekday >= 5 else 0,
+
+        'is_peak_month': 1 if month in [6, 7, 12] else 0,
+
+        'duration_category': duration_category
+
+    }])
 
     try:
-        response = requests.post(url, json=payload)
+
+        response = requests.post(
+            url,
+            json=payload.to_dict(orient='records')[0]
+        )
 
         prediction = response.json()
 
@@ -109,8 +141,10 @@ if st.button("Predict Flight Price"):
             )
 
         else:
+
             st.error(prediction)
 
     except Exception as e:
 
         st.error(f"Error: {e}")
+   

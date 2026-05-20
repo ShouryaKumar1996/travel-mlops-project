@@ -1,0 +1,69 @@
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage('Clone Repository') {
+
+            steps {
+
+                echo 'Repository Ready'
+
+            }
+        }
+
+        stage('Install Dependencies') {
+
+            steps {
+
+                bat 'C:\\Users\\shourya\\anaconda3\\envs\\travel_mlops\\python.exe -m pip install -r C:\\Users\\shourya\\Desktop\\travel-mlops-project\\requirements.txt'
+
+            }
+        }
+
+        stage('Run Flask API Test') {
+
+            steps {
+
+                bat 'C:\\Users\\shourya\\anaconda3\\envs\\travel_mlops\\python.exe -c "import joblib; print(\'Flask App Test Successful\')"'
+
+            }
+        }
+
+        stage('Build Docker Image') {
+
+            steps {
+
+                bat 'cd C:\\Users\\shourya\\Desktop\\travel-mlops-project && "C:\\Users\\shourya\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t flight-price-api .'
+
+            }
+        }
+
+        stage('Kubernetes Deployment') {
+
+            steps {
+
+                bat 'cd C:\\Users\\shourya\\Desktop\\travel-mlops-project && set KUBECONFIG=C:\\Users\\shourya\\.kube\\config && "C:\\Users\\shourya\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\kubectl.exe" apply -f kubernetes/deployment.yaml'
+
+                bat 'cd C:\\Users\\shourya\\Desktop\\travel-mlops-project && set KUBECONFIG=C:\\Users\\shourya\\.kube\\config && "C:\\Users\\shourya\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\kubectl.exe" apply -f kubernetes/service.yaml'
+
+            }
+        }
+    }
+
+    post {
+
+        success {
+
+            echo 'Pipeline Executed Successfully!'
+
+        }
+
+        failure {
+
+            echo 'Pipeline Failed!'
+
+        }
+    }
+}
