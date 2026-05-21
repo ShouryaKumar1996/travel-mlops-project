@@ -1,0 +1,23 @@
+artifact_path: file:///c:/Users/shourya/Desktop/travel-mlops-project/gender_classification/notebooks/mlruns/1/models/m-4bfe4023c01746e7a1b9efe9b19d6dcf/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.10.20
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+    skops_trusted_types: null
+mlflow_version: 3.12.0
+model_id: m-4bfe4023c01746e7a1b9efe9b19d6dcf
+model_size_bytes: 8560653
+model_uuid: m-4bfe4023c01746e7a1b9efe9b19d6dcf
+prompts: null
+run_id: d8bdba6372514b46ba2154b90f2f3f6b
+utc_time_created: '2026-05-21 07:14:15.213045'
