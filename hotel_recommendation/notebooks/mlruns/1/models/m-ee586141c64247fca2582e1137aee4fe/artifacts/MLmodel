@@ -1,0 +1,15 @@
+artifact_path: file:///c:/Users/shourya/Desktop/travel-mlops-project/hotel_recommendation/notebooks/mlruns/1/models/m-ee586141c64247fca2582e1137aee4fe/artifacts
+flavors:
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+    skops_trusted_types: null
+mlflow_version: 3.12.0
+model_id: m-ee586141c64247fca2582e1137aee4fe
+model_size_bytes: 1247
+model_uuid: m-ee586141c64247fca2582e1137aee4fe
+prompts: null
+run_id: 9a5065db261042c2b1f3d97b6b56777f
+utc_time_created: '2026-05-21 05:19:03.189495'
