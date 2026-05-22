@@ -120,9 +120,6 @@ MLflow is used for:
 - Experiment comparison
 - Artifact storage
 
-### MLflow Dashboard
-
-![MLflow](screenshots/mlflow_dashboard.png)
 
 ---
 
@@ -136,19 +133,13 @@ The trained model is deployed using Flask API.
 POST /predict
 ```
 
-### Flask API Screenshot
-
-![Flask API](screenshots/flask_api.png)
-
 ---
 
 # Streamlit Web Application
 
 A user-friendly Streamlit frontend was developed for real-time flight price prediction.
 
-### Streamlit Screenshot
 
-![Streamlit](screenshots/streamlit_app.png)
 
 ---
 
@@ -156,9 +147,7 @@ A user-friendly Streamlit frontend was developed for real-time flight price pred
 
 Docker was used to containerize the Flask application for reproducible deployment.
 
-### Docker Screenshot
 
-![Docker](screenshots/docker_container.png)
 
 ---
 
@@ -169,9 +158,6 @@ The Docker container was deployed on Kubernetes using:
 - Deployment YAML
 - Service YAML
 
-### Kubernetes Screenshot
-
-![Kubernetes](screenshots/kubernetes_pods.png)
 
 ---
 
@@ -184,9 +170,6 @@ Jenkins was implemented to automate:
 - Docker image building
 - Kubernetes deployment
 
-### Jenkins Screenshot
-
-![Jenkins](screenshots/jenkins_pipeline.png)
 
 ---
 
@@ -201,9 +184,7 @@ Apache Airflow was used to orchestrate the ML pipeline workflow.
 - Model Evaluation
 - Model Deployment
 
-### Airflow Screenshot
 
-![Airflow](screenshots/airflow_dag.png)
 
 ---
 
